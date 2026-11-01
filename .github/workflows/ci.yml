@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, kernel-check, and compare Theorem 1
+    runs-on: ubuntu-latest
+    # Core.lean is one large file, so the build cannot parallelise much.
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      # Installs the toolchain named in lean-toolchain, fetches the Mathlib
+      # cache, and runs `lake build` on the default targets.
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: true
+
+      # `lake check` and `lake comparator` build inside a bubblewrap sandbox.
+      # Ubuntu 24.04 blocks the unprivileged user namespaces bwrap needs;
+      # the runner is disposable, so lifting that restriction is safe here.
+      - name: Install bubblewrap
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq bubblewrap
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: lake check (every numbered result, standard axioms only)
+        run: lake check
+
+      # Uses comparator.json as committed, plus the independent kernels
+      # (nanoda, con-ron) that the toolchain bundles, when they are present.
+      - name: lake comparator (Theorem 1 against Challenge.lean)
+        run: |
+          prefix=$(lean --print-prefix)
+          config="$RUNNER_TEMP/comparator.json"
+          python3 - comparator.json "$config" "$prefix" <<'PY'
+          import json, os, sys
+          src, dst, prefix = sys.argv[1:]
+          cfg = json.load(open(src))
+          kernels = {
+              name: [f"{prefix}/bin/{exe}"]
+              for name, exe in [("nanoda", "nanoda_bin"), ("con-ron", "con-ron")]
+              if os.access(f"{prefix}/bin/{exe}", os.X_OK)
+          }
+          if kernels:
+              cfg["external_kernels"] = kernels
+          print("external kernels:", ", ".join(kernels) or "none")
+          json.dump(cfg, open(dst, "w"), indent=2)
+          PY
+          lake comparator --config "$config"
