@@ -6,8 +6,9 @@
 #   make.sh PaperFormalization build    writes build/formalization.pdf and keeps every
 #                                        intermediate file (formalization.tex, logs, …) in build/
 #
-# Exit status is non-zero if the PDF could not be built, or if some character could not be
-# rendered by any of the fonts (the PDF is still written, but would be missing those glyphs).
+# Exit status is non-zero if a source-line citation in Statements.lean is wrong (nothing is
+# rendered), if the PDF could not be built, or if some character could not be rendered by any
+# of the fonts (the PDF is still written, but would be missing those glyphs).
 set -euo pipefail
 if [ $# -lt 1 ] || [ $# -gt 2 ]; then
   echo "usage: $(basename "$0") PAPERFORMALIZATION_DIR [BUILD_DIR]" >&2
@@ -24,6 +25,13 @@ else
   OUT="$S/formalization.pdf"
 fi
 
+python3 -I "$T/citations.py" "$S/PaperFormalization/Statements.lean" > "$B/citations.txt" 2>&1 || {
+  cat "$B/citations.txt"
+  echo "Statements.lean cites source lines that are wrong. Fix them with:" >&2
+  echo "  citations.py $S/PaperFormalization/Statements.lean --fix   (with Nix: nix run .#citations -- <Statements.lean> --fix)" >&2
+  exit 1
+}
+head -1 "$B/citations.txt"
 python3 -I "$T/build.py" "$S/PaperFormalization/Statements.lean" "$S/paper.tex" "$S/lean-toolchain" "$S/lakefile.toml" "$B" > "$B/stats.txt" 2>&1 \
   || { cat "$B/stats.txt"; echo "build.py failed; files kept in $B" >&2; exit 1; }
 cd "$B"

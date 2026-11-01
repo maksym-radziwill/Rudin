@@ -23,11 +23,30 @@ build folder, or those files end up in it.
 
 Both commands report problems and exit non-zero:
 
+- the build refuses to render if a source-line citation in Statements.lean is wrong
+  (see "Source citations" below);
 - the build fails if some character could not be rendered by any font (the PDF is still
   written, but would be missing those glyphs);
 - a paper excerpt that does not compile on its own is shown as verbatim TeX and reported
   as `[tex N] FALLBACK to verbatim`, with its error and the path of its log;
-- the check prints `FAIL` and lists any missing code line or unmatched word.
+- the check prints `FAIL` and lists any missing code line, unmatched word or wrong citation.
+
+## Source citations
+
+Statements.lean cites lines of Core.lean and Compatibility.lean: each D-block's
+"`Core.lean:621`", and prose such as "`thm_onb` (Core.lean:17679)". These go stale whenever
+the cited file changes above them, so they are verified mechanically:
+
+    # report
+    nix run .#citations -- ../PaperFormalization/Statements.lean
+    # rewrite stale line numbers in place (only the numbers change; the line count does not)
+    nix run .#citations -- ../PaperFormalization/Statements.lean --fix
+
+A D-block's code must appear verbatim in the cited file starting at the cited line. A prose
+citation's line must declare the identifier named just before it (or lie in that
+declaration's docstring); a citation of a construction rather than a named declaration must
+point at a declaration that uses the identifiers the sentence mentions. `--fix` changes a
+number only when the correct line is unambiguous and lists anything else for a human.
 
 `warning: Git tree … is dirty` only means the repository has uncommitted changes. Nix
 sees only files that git tracks, so `git add` new files in this folder before running.

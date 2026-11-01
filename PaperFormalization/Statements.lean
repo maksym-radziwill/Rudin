@@ -285,7 +285,7 @@ Statements depending on these definitions: Theorem 5, Lemma 7, Proposition 9, Pr
 /-!
 ### D001 — `expTwoPiI`
 
-`Core.lean:617` · Used by: Lemma 16, Lemma 17, Lemma 18; Theorem 5, Lemma 7,
+`Core.lean:619` · Used by: Lemma 16, Lemma 17, Lemma 18; Theorem 5, Lemma 7,
 Proposition 9, Proposition 10, Theorem 14, Proposition 15, Lemma 19
 (indirectly).
 
@@ -327,7 +327,7 @@ Statements depending on these definitions: Theorem 1, Theorem 5, Proposition 9, 
 /-!
 ### D002 — `degIdx`
 
-`Core.lean:621` · Used by: Theorem 1, Theorem 5, Proposition 9, Proposition 10,
+`Core.lean:623` · Used by: Theorem 1, Theorem 5, Proposition 9, Proposition 10,
 Lemma 11 (indirectly).
 
 ```lean
@@ -340,7 +340,7 @@ Library terms: G34 `Finset.piAntidiag`.
 /-!
 ### D003 — `PolySpaceH`
 
-`Core.lean:623` · Used by: Theorem 1, Theorem 5, Lemma 11; Proposition 9,
+`Core.lean:625` · Used by: Theorem 1, Theorem 5, Lemma 11; Proposition 9,
 Proposition 10 (indirectly).
 
 ```lean
@@ -353,7 +353,7 @@ Library terms: G35 `↥s`.
 /-!
 ### D004 — `polyEval`
 
-`Core.lean:625` · Used by: Theorem 1, Theorem 5, Proposition 10, Lemma 11.
+`Core.lean:627` · Used by: Theorem 1, Theorem 5, Proposition 10, Lemma 11.
 
 ```lean
 noncomputable def polyEval (K N : ℕ) (c : PolySpaceH K N) (z : Fin K → ℂ) : ℂ :=
@@ -366,7 +366,7 @@ Library terms: G15 `x.val`; G35 `↥s`.
 /-!
 ### D005 — `UniformBoundUnit.cSphere`
 
-`Core.lean:3185` · Used by: Theorem 5, Lemma 11.
+`Core.lean:3187` · Used by: Theorem 5, Lemma 11.
 
 ```lean
 def cSphere (K : ℕ) : Set (Fin K → ℂ) := {z | ∑ s, ‖z s‖ ^ 2 = 1}
@@ -434,7 +434,7 @@ Statements depending on these definitions: Theorem 1, Theorem 5, Proposition 9, 
 /-!
 ### D006 — `polyInner`
 
-`Core.lean:628` · Used by: Theorem 1, Theorem 5, Proposition 9, Lemma 11.
+`Core.lean:630` · Used by: Theorem 1, Theorem 5, Proposition 9, Lemma 11.
 
 ```lean
 noncomputable def polyInner (K N : ℕ) (c d : PolySpaceH K N) : ℂ :=
@@ -544,7 +544,7 @@ Statements depending on these definitions: Theorem 5, Proposition 10, Theorem 14
 /-!
 ### D007 — `polyPZ`
 
-`Core.lean:9569` · Used by: Theorem 21, Lemma 25, Lemma 26, Proposition 28;
+`Core.lean:9571` · Used by: Theorem 21, Lemma 25, Lemma 26, Proposition 28;
 Lemma 24, Proposition 27 (indirectly).
 
 ```lean
@@ -556,7 +556,7 @@ def polyPZ (d : ℕ) (W : Finset ((Fin d → ℤ) × ℤ)) : Set (Fin d → ℤ)
 /-!
 ### D008 — `polyP`
 
-`Core.lean:639` · Used by: Theorem 5, Proposition 10 (indirectly).
+`Core.lean:641` · Used by: Theorem 5, Proposition 10 (indirectly).
 
 ```lean
 def polyP (k : ℕ) (L : Finset ((Fin k → ℤ) × ℤ)) : Set (Fin k → ℕ) :=
@@ -567,7 +567,7 @@ def polyP (k : ℕ) (L : Finset ((Fin k → ℤ) × ℤ)) : Set (Fin k → ℕ) 
 /-!
 ### D009 — `vecSupport`
 
-`Core.lean:9566` · Used by: Lemma 26; Lemma 25, Proposition 27 (indirectly).
+`Core.lean:9568` · Used by: Lemma 26; Lemma 25, Proposition 27 (indirectly).
 
 ```lean
 def vecSupport {d : ℕ} (w : Fin d → ℤ) : Finset (Fin d) :=
@@ -580,7 +580,7 @@ Library terms: G26 `Finset.filter`.
 /-!
 ### D010 — `boxZ`
 
-`Core.lean:1976` · Used by: Theorem 21; Proposition 10, Theorem 14, Lemma 24,
+`Core.lean:1978` · Used by: Theorem 21; Proposition 10, Theorem 14, Lemma 24,
 Lemma 25, Lemma 26, Proposition 27 (indirectly).
 
 ```lean
@@ -594,7 +594,7 @@ Library terms: G25 `Finset.Icc`; G33 `Fintype.piFinset`.
 /-!
 ### D011 — `boxSide`
 
-`Core.lean:1979` · Used by: Proposition 10, Theorem 14, Theorem 21, Lemma 25,
+`Core.lean:1981` · Used by: Proposition 10, Theorem 14, Theorem 21, Lemma 25,
 Lemma 26, Proposition 27 (indirectly).
 
 ```lean
@@ -608,7 +608,7 @@ Library terms: G25 `Finset.Icc`; G28 `Finset.card`.
 /-!
 ### D012 — `boxVol`
 
-`Core.lean:1982` · Used by: Theorem 14, Theorem 21, Proposition 27; Proposition
+`Core.lean:1984` · Used by: Theorem 14, Theorem 21, Proposition 27; Proposition
 10 (indirectly).
 
 ```lean
@@ -620,7 +620,7 @@ def boxVol (k : ℕ) (lo hi : Fin k → ℤ) : ℕ :=
 /-!
 ### D013 — `boxLen`
 
-`Core.lean:1985` · Used by: Theorem 21; Proposition 10 (indirectly).
+`Core.lean:1987` · Used by: Theorem 21; Proposition 10 (indirectly).
 
 ```lean
 def boxLen (k : ℕ) (w : Fin k → ℤ) (lo hi : Fin k → ℤ) : ℕ :=
@@ -633,7 +633,7 @@ Library terms: G26 `Finset.filter`; G29 `Finset.sup`.
 /-!
 ### D014 — `boxSect`
 
-`Core.lean:1988` · Used by: Proposition 10 (indirectly).
+`Core.lean:1990` · Used by: Proposition 10 (indirectly).
 
 ```lean
 noncomputable def boxSect (k : ℕ) (w : Fin k → ℤ) (lo hi : Fin k → ℤ) : ℝ :=
@@ -644,7 +644,7 @@ noncomputable def boxSect (k : ℕ) (w : Fin k → ℤ) (lo hi : Fin k → ℤ) 
 /-!
 ### D015 — `polyBoxZ`
 
-`Core.lean:1991` · Used by: Theorem 14; Proposition 10 (indirectly).
+`Core.lean:1993` · Used by: Theorem 14; Proposition 10 (indirectly).
 
 ```lean
 def polyBoxZ (k : ℕ) (L : Finset ((Fin k → ℤ) × ℤ)) (lo hi : Fin k → ℤ) :
@@ -658,7 +658,7 @@ Library terms: G26 `Finset.filter`.
 /-!
 ### D016 — `quadExpSum`
 
-`Core.lean:1995` · Used by: Theorem 14; Proposition 10 (indirectly).
+`Core.lean:1997` · Used by: Theorem 14; Proposition 10 (indirectly).
 
 ```lean
 noncomputable def quadExpSum (k : ℕ) (α : ℝ) (c : Fin k → ℕ) (θ : Fin k → ℝ)
@@ -670,7 +670,7 @@ noncomputable def quadExpSum (k : ℕ) (α : ℝ) (c : Fin k → ℕ) (θ : Fin 
 /-!
 ### D017 — `UniformBoundUnit.latticePtsZ`
 
-`Core.lean:3191` · Used by: Theorem 5 (indirectly).
+`Core.lean:3193` · Used by: Theorem 5 (indirectly).
 
 ```lean
 def latticePtsZ (k : ℕ) (L : Finset ((Fin k → ℤ) × ℤ)) (lo hi : Fin k → ℤ) :
@@ -685,7 +685,7 @@ Library terms: G25 `Finset.Icc`; G26 `Finset.filter`; G33 `Fintype.piFinset`.
 /-!
 ### D018 — `UniformBoundUnit.boxVolZ`
 
-`Core.lean:3196` · Used by: Theorem 5 (indirectly).
+`Core.lean:3198` · Used by: Theorem 5 (indirectly).
 
 ```lean
 def boxVolZ (k : ℕ) (lo hi : Fin k → ℤ) : ℕ :=
@@ -698,7 +698,7 @@ Library terms: G25 `Finset.Icc`; G28 `Finset.card`.
 /-!
 ### D019 — `UniformBoundUnit.boxLenZ`
 
-`Core.lean:3199` · Used by: Theorem 5 (indirectly).
+`Core.lean:3201` · Used by: Theorem 5 (indirectly).
 
 ```lean
 def boxLenZ (k : ℕ) (w : Fin k → ℤ) (lo hi : Fin k → ℤ) : ℕ :=
@@ -713,7 +713,7 @@ Library terms: G25 `Finset.Icc`; G26 `Finset.filter`; G28 `Finset.card`; G29
 /-!
 ### D020 — `UniformBoundUnit.boxSectZ`
 
-`Core.lean:3203` · Used by: Theorem 5 (indirectly).
+`Core.lean:3205` · Used by: Theorem 5 (indirectly).
 
 ```lean
 noncomputable def boxSectZ (k : ℕ) (w : Fin k → ℤ) (lo hi : Fin k → ℤ) : ℝ :=
@@ -744,7 +744,7 @@ Statements depending on these definitions: Theorem 5.
 /-!
 ### D021 — `UniformBoundUnit.BddPartQuot`
 
-`Core.lean:3187` · Used by: Theorem 5.
+`Core.lean:3189` · Used by: Theorem 5.
 
 ```lean
 def BddPartQuot (a α : ℝ) : Prop :=
@@ -877,7 +877,7 @@ Statements depending on these definitions: Theorem 21, Lemma 24, Lemma 25, Lemma
 /-!
 ### D022 — `pieceAffineImage`
 
-`Core.lean:9678` · Used by: Theorem 21, Lemma 24, Lemma 25, Lemma 26,
+`Core.lean:9680` · Used by: Theorem 21, Lemma 24, Lemma 25, Lemma 26,
 Proposition 27 (indirectly).
 
 ```lean
@@ -892,7 +892,7 @@ Library terms: G37 `f '' S`; G63 `Matrix.mulVec`.
 /-!
 ### D023 — `matInftyNorm`
 
-`Core.lean:9664` · Used by: Theorem 21, Lemma 24, Lemma 26, Proposition 27
+`Core.lean:9666` · Used by: Theorem 21, Lemma 24, Lemma 26, Proposition 27
 (indirectly).
 
 ```lean
@@ -906,7 +906,7 @@ Library terms: G29 `Finset.sup`; G46 `Int.natAbs`.
 /-!
 ### D024 — `transitionSize`
 
-`Core.lean:9695` · Used by: Lemma 24, Lemma 26, Proposition 27.
+`Core.lean:9697` · Used by: Lemma 24, Lemma 26, Proposition 27.
 
 ```lean
 def transitionSize {d : ℕ} (Φ : Matrix (Fin d) (Fin d) ℤ) : ℕ := matInftyNorm Φ
@@ -916,7 +916,7 @@ def transitionSize {d : ℕ} (Φ : Matrix (Fin d) (Fin d) ℤ) : ℕ := matInfty
 /-!
 ### D025 — `Paper.definition3`
 
-`Compatibility.lean:62` · Used by no displayed statement.
+`Compatibility.lean:76` · Used by no displayed statement.
 
 The paper's two displayed disjoint unions P = ⨆ᵢ 𝒫(Lᵢ) and
 Q = ⨆ᵢ (Aᵢ 𝒫(Lᵢ) + bᵢ) are each stated as a set equality together with
@@ -951,7 +951,7 @@ Library terms: G28 `Finset.card`; G38 `⋃ i, S i`; G39 `Disjoint`; G46
 /-!
 ### D025w — `Paper.definition3Weak`
 
-`Compatibility.lean:91` · Used by no displayed statement.
+`Compatibility.lean:100` · Used by no displayed statement.
 
 **Not the paper's Definition 3.** This is the superseded encoding, kept only so
 that the counterexamples in the `affine` context name a real declaration: it
@@ -1034,7 +1034,7 @@ Statements depending on these definitions: Theorem 5, Proposition 9, Proposition
 /-!
 ### D026 — `lcmUpTo`
 
-`Core.lean:619` · Used by: Theorem 5, Proposition 10.
+`Core.lean:621` · Used by: Theorem 5, Proposition 10.
 
 ```lean
 def lcmUpTo (k : ℕ) : ℕ := (Finset.Icc 1 k).lcm id
@@ -1046,7 +1046,7 @@ Library terms: G25 `Finset.Icc`; G31 `Finset.lcm`.
 /-!
 ### D027 — `simplexS`
 
-`Core.lean:633` · Used by: Proposition 9, Proposition 28; Theorem 5, Proposition
+`Core.lean:635` · Used by: Proposition 9, Proposition 28; Theorem 5, Proposition
 10 (indirectly).
 
 ```lean
@@ -1060,7 +1060,7 @@ Library terms: G24 `Finset.range`; G26 `Finset.filter`; G33 `Fintype.piFinset`.
 /-!
 ### D028 — `boxB`
 
-`Core.lean:636` · Used by: Theorem 5, Proposition 9, Proposition 10.
+`Core.lean:638` · Used by: Theorem 5, Proposition 9, Proposition 10.
 
 ```lean
 def boxB (k N : ℕ) : Finset (Fin k → ℕ) :=
@@ -1073,7 +1073,7 @@ Library terms: G15 `x.val`; G24 `Finset.range`; G33 `Fintype.piFinset`.
 /-!
 ### D029 — `IsUNmap`
 
-`Core.lean:642` · Used by: Theorem 5, Proposition 10.
+`Core.lean:644` · Used by: Theorem 5, Proposition 10.
 
 ```lean
 def IsUNmap (k R N : ℕ) (U : (Fin k → ℕ) → Fin k → ℕ) : Prop :=
@@ -1219,17 +1219,17 @@ In `basisPhi` (the coefficient of z^j in φ_l) the entries of D_N use the
 propositions packaging Theorem 2 and Proposition 4, not extra assumptions
 of the paper. Core proves `UniformBoundUnit.ThmBox` and
 `UniformBoundUnit.PropUNmap k` (k ≥ 1) as the private lemmas
-`agent4_onb_box_bridge` (Core.lean:17621) and `agent4_onb_UN_bridge`
-(Core.lean:17646); `thm_onb` (Core.lean:17675) applies
+`agent4_onb_box_bridge` (Core.lean:17627) and `agent4_onb_UN_bridge`
+(Core.lean:17652); `thm_onb` (Core.lean:17681) applies
 `UniformBoundUnit.thm_onbexplicit_allDegrees` to them with a = 2, α = √2
-(`bddPartQuot_two_sqrtTwo`, Core.lean:4377). So Theorem 1 depends on no
+(`bddPartQuot_two_sqrtTwo`, Core.lean:4379). So Theorem 1 depends on no
 unproved hypothesis, while Theorem 5 (`UniformBoundUnit` versions) and
 Proposition 10 (root versions) are stated conditionally on them
 (`theorem5OrthonormalBasis` assumes an `IsUNmap` family `hU` instead). Core
 also proves the root `ThmBox` (private `a4boxOct14_new_finished_v2`,
-Core.lean:14755), whence `thm_box`; the root `PropUNmap` occurs in Core only
+Core.lean:14761), whence `thm_box`; the root `PropUNmap` occurs in Core only
 in its definition and as the hypothesis `hUN` of `prop_shiftedbound`
-(Core.lean:3119), and no declaration proves it.
+(Core.lean:3121), and no declaration proves it.
 
 All four follow from displayed theorems, and the derivations are now
 exported from `Compatibility.lean` as `Paper.theorem2_to_thmBox`,
@@ -1266,7 +1266,7 @@ Statements depending on these definitions: Theorem 5, Proposition 10.
 /-!
 ### D030 — `basisPhi`
 
-`Core.lean:655` · Used by: Theorem 5.
+`Core.lean:657` · Used by: Theorem 5.
 
 ```lean
 noncomputable def basisPhi (k N : ℕ) (α : ℝ) (U : (Fin k → ℕ) → Fin k → ℕ)
@@ -1287,7 +1287,7 @@ Library terms: G15 `x.val`; G17 `Fin.castSucc`; G53 `Nat.multinomial`; G57
 /-!
 ### D031 — `ThmBox`
 
-`Core.lean:1999` · Used by: Proposition 10.
+`Core.lean:2001` · Used by: Proposition 10.
 
 ```lean
 def ThmBox : Prop :=
@@ -1313,7 +1313,7 @@ Library terms: G28 `Finset.card`; G55 `Irrational`; G57 `Real.sqrt`; G76
 /-!
 ### D032 — `PropUNmap`
 
-`Core.lean:2014` · Used by: Proposition 10.
+`Core.lean:2016` · Used by: Proposition 10.
 
 ```lean
 def PropUNmap : Prop :=
@@ -1325,7 +1325,7 @@ def PropUNmap : Prop :=
 /-!
 ### D033 — `UniformBoundUnit.ThmBox`
 
-`Core.lean:3206` · Used by: Theorem 5.
+`Core.lean:3208` · Used by: Theorem 5.
 
 ```lean
 def ThmBox : Prop :=
@@ -1354,7 +1354,7 @@ Library terms: G28 `Finset.card`; G57 `Real.sqrt`.
 /-!
 ### D034 — `UniformBoundUnit.PropUNmap`
 
-`Core.lean:3225` · Used by: Theorem 5.
+`Core.lean:3227` · Used by: Theorem 5.
 
 ```lean
 def PropUNmap (k : ℕ) : Prop :=
@@ -1482,7 +1482,7 @@ Statements depending on these definitions: Lemma 6, Lemma 7.
 /-!
 ### D035 — `poissonQ`
 
-`Core.lean:930` · Used by: Lemma 6, Lemma 7.
+`Core.lean:932` · Used by: Lemma 6, Lemma 7.
 
 ```lean
 noncomputable def poissonQ (lam : ℝ) (n : ℤ) : ℝ :=
@@ -1498,7 +1498,7 @@ Library terms: G45 `Int.toNat`; G54 `Nat.factorial`; G56 `x ^ y`; G57
 /-!
 ### D036 — `poissonH`
 
-`Core.lean:935` · Used by: Lemma 6, Lemma 7.
+`Core.lean:937` · Used by: Lemma 6, Lemma 7.
 
 ```lean
 noncomputable def poissonH (lam : ℝ) : ℝ := Real.sqrt (1 + lam)
@@ -1510,7 +1510,7 @@ Library terms: G57 `Real.sqrt`.
 /-!
 ### D037 — `poissonRho`
 
-`Core.lean:937` · Used by: Lemma 6.
+`Core.lean:939` · Used by: Lemma 6.
 
 ```lean
 noncomputable def poissonRho (lam : ℝ) (n : ℤ) : ℝ :=
@@ -1581,7 +1581,7 @@ Statements depending on these definitions: Lemma 7.
 /-!
 ### D038 — `hatEta`
 
-`Core.lean:1219` · Used by: Lemma 7 (indirectly).
+`Core.lean:1221` · Used by: Lemma 7 (indirectly).
 
 ```lean
 noncomputable def hatEta (x : ℝ) : ℝ := max (1 - |x|) 0
@@ -1591,7 +1591,7 @@ noncomputable def hatEta (x : ℝ) : ℝ := max (1 - |x|) 0
 /-!
 ### D039 — `poissonQLoc`
 
-`Core.lean:1221` · Used by: Lemma 7.
+`Core.lean:1223` · Used by: Lemma 7.
 
 ```lean
 noncomputable def poissonQLoc (lam : ℝ) (m : ℤ) (n : ℤ) : ℝ :=
@@ -1602,7 +1602,7 @@ noncomputable def poissonQLoc (lam : ℝ) (m : ℤ) (n : ℤ) : ℝ :=
 /-!
 ### D040 — `seqFourier`
 
-`Core.lean:1224` · Used by: Lemma 7.
+`Core.lean:1226` · Used by: Lemma 7.
 
 ```lean
 noncomputable def seqFourier (b : ℤ → ℝ) (u : ℝ) : ℂ :=
@@ -1707,7 +1707,7 @@ Statements depending on these definitions: Proposition 9, Proposition 10.
 /-!
 ### D041 — `shiftedBasisPhi`
 
-`Core.lean:2018` · Used by: Proposition 9, Proposition 10.
+`Core.lean:2020` · Used by: Proposition 9, Proposition 10.
 
 ```lean
 noncomputable def shiftedBasisPhi (k N b : ℕ) (α : ℝ)
@@ -1753,7 +1753,7 @@ that the φ^b_l, l ∈ B_{N−b} (which lie in the span of the z^n with n_K ≥ 
 span it; the paper gets this by counting dimensions (`Compatibility.lean`
 exports only the index bijection for that count,
 `Paper.Proposition9.indexEquiv`). `Compatibility.lean` deliberately exports no
-`Paper.proposition9`. `assemble_faces_clean` (Core.lean:4076) combines
+`Paper.proposition9`. `assemble_faces_clean` (Core.lean:4078) combines
 `shifted_orth` with the face lifts of Lemma 11 into binom(N+k,k) = dim H_{K,N}
 orthonormal polynomials of degree N.
 -/
@@ -1857,7 +1857,7 @@ Statements depending on these definitions: Lemma 11.
 /-!
 ### D042 — `AllDegreesProof.faceLift`
 
-`Core.lean:3644` · Used by: Lemma 11.
+`Core.lean:3646` · Used by: Lemma 11.
 
 ```lean
 noncomputable def faceLift (k N i : ℕ) (c : ℂ) (v : PolySpaceH k (N-i)) :
@@ -1878,7 +1878,7 @@ Library terms: G15 `x.val`; G16 `Fin.last`; G17 `Fin.castSucc`; G18 `Fin.init`.
 /-!
 ### D043 — `AllDegreesProof.faceScale`
 
-`Core.lean:3717` · Used by: Lemma 11.
+`Core.lean:3719` · Used by: Lemma 11.
 
 ```lean
 noncomputable def faceScale (k N i : ℕ) : ℝ :=
@@ -2081,7 +2081,7 @@ Statements depending on these definitions: Theorem 14.
 /-!
 ### D044 — `IsBalancedPair`
 
-`Core.lean:4392` · Used by: Theorem 14.
+`Core.lean:4394` · Used by: Theorem 14.
 
 ```lean
 def IsBalancedPair (k R : ℕ) (L : Finset ((Fin k → ℤ) × ℤ)) (lo hi : Fin k → ℤ) : Prop :=
@@ -2168,7 +2168,7 @@ Statements depending on these definitions: Proposition 15, Lemma 17.
 /-!
 ### D045 — `IsSmoothCutoff`
 
-`Core.lean:5120` · Used by: Proposition 15, Lemma 17.
+`Core.lean:5122` · Used by: Proposition 15, Lemma 17.
 
 ```lean
 def IsSmoothCutoff (U : ℝ → ℂ) : Prop :=
@@ -2183,7 +2183,7 @@ Library terms: G36 `Set.Icc`; G43 `Function.support`; G74 `ContDiff ℝ ((⊤ : 
 /-!
 ### D046 — `multiwallTerm`
 
-`Core.lean:7142` · Used by: Proposition 15.
+`Core.lean:7144` · Used by: Proposition 15.
 
 ```lean
 noncomputable def multiwallTerm (k r : ℕ) (α : ℝ) (c : Fin k → ℕ) (β : Fin k → ℝ)
@@ -2200,7 +2200,7 @@ Library terms: G47 `Int.sign`.
 /-!
 ### D047 — `multiwallT`
 
-`Core.lean:7149` · Used by: Proposition 15.
+`Core.lean:7151` · Used by: Proposition 15.
 
 ```lean
 noncomputable def multiwallT (k r : ℕ) (α : ℝ) (c : Fin k → ℕ) (β : Fin k → ℝ)
@@ -2306,7 +2306,7 @@ Coverage: `direct`.
 `lemma16` is `eq:saw` (2|h| < L is |h| < L/2; for even L, `sgnIndex L` is
 the paper's index set); `lemma16OddCoefficient` is the cotangent formula
 for odd ℓ and every L; `lemma16CoefficientBound` (`norm_sgnCoeff_le`,
-Core.lean:4798) has the paper's L ≥ 4 and 0 < |ℓ| < L/2 but not L even, a
+Core.lean:4800) has the paper's L ≥ 4 and 0 < |ℓ| < L/2 but not L even, a
 harmless generalization. `sgnCoeff` is 0 at even ℓ
 (`lemma16EvenCoefficient`); for even ℓ with 0 < |ℓ| < L/2 the paper's
 ĉ_L(ℓ) ≠ 0, so there the displayed bound is about 0. This is harmless: only
@@ -2318,7 +2318,7 @@ even ℓ included -- is therefore exported on its own, as
 `Paper.lemma16CotWeightBound` (displayed below, after the other
 endpoints): it bounds
 |`sgnCotWeight L ℓ`| = |ĉ_L(ℓ)|, so it covers the even case, and it wraps
-Core's `abs_sgnCotWeight_le` (Core.lean:4764). On odd ℓ the two bounds agree,
+Core's `abs_sgnCotWeight_le` (Core.lean:4766). On odd ℓ the two bounds agree,
 by `Lemma16.oddCoefficientFormula` together with ‖-i·z‖ = ‖z‖.
 -/
 
@@ -2335,7 +2335,7 @@ Statements depending on these definitions: Lemma 16.
 /-!
 ### D048 — `sgnCotWeight`
 
-`Core.lean:4452` · Used by: Lemma 16 (indirectly).
+`Core.lean:4454` · Used by: Lemma 16 (indirectly).
 
 ```lean
 noncomputable def sgnCotWeight (L : ℕ) (x : ℝ) : ℝ :=
@@ -2348,7 +2348,7 @@ Library terms: G58 `Real.exp`; G60 `Real.cot`.
 /-!
 ### D049 — `sgnCoeff`
 
-`Core.lean:4455` · Used by: Lemma 16.
+`Core.lean:4457` · Used by: Lemma 16.
 
 ```lean
 noncomputable def sgnCoeff (L : ℕ) (l : ℤ) : ℂ :=
@@ -2361,7 +2361,7 @@ Library terms: G51 `Odd`; G58 `Real.exp`.
 /-!
 ### D050 — `sgnIndex`
 
-`Core.lean:4458` · Used by: Lemma 16.
+`Core.lean:4460` · Used by: Lemma 16.
 
 ```lean
 def sgnIndex (L : ℕ) : Finset ℤ :=
@@ -2470,7 +2470,7 @@ Statements depending on these definitions: Lemma 17, Lemma 18.
 /-!
 ### D051 — `quadPhase`
 
-`Core.lean:5040` · Used by: Lemma 17, Lemma 18 (indirectly).
+`Core.lean:5042` · Used by: Lemma 17, Lemma 18 (indirectly).
 
 ```lean
 noncomputable def quadPhase (a b : ℤ) (q : ℕ) (_hq : 0 < q) (x : ℤ) : ℂ :=
@@ -2481,7 +2481,7 @@ noncomputable def quadPhase (a b : ℤ) (q : ℕ) (_hq : 0 < q) (x : ℤ) : ℂ 
 /-!
 ### D052 — `quadGaussSum`
 
-`Core.lean:5043` · Used by: Lemma 17, Lemma 18.
+`Core.lean:5045` · Used by: Lemma 17, Lemma 18.
 
 ```lean
 noncomputable def quadGaussSum (a b : ℤ) (q : ℕ) (hq : 0 < q) : ℂ :=
@@ -2494,7 +2494,7 @@ Library terms: G24 `Finset.range`.
 /-!
 ### D053 — `oscIntegralW`
 
-`Core.lean:5126` · Used by: Lemma 17.
+`Core.lean:5128` · Used by: Lemma 17.
 
 ```lean
 noncomputable def oscIntegralW (U : ℝ → ℂ) (lam xi : ℝ) : ℂ :=
@@ -2562,7 +2562,7 @@ Statements depending on these definitions: Lemma 18.
 /-!
 ### D054 — `gaussPhasePhi`
 
-`Core.lean:5750` · Used by: Lemma 18.
+`Core.lean:5752` · Used by: Lemma 18.
 
 ```lean
 noncomputable def gaussPhasePhi (a abar : ℤ) (c q : ℕ) (hq : 0 < q) (x : ℤ) : ℂ :=
@@ -2621,7 +2621,7 @@ theorem lemma18 :
 ### Paper context: Nearest-integer distance and progression sums (`weyl`)
 
 The paper's ‖x‖ (distance to the nearest integer) occurs in no displayed
-statement (Core's `intDist`, Core.lean:5928, only in auxiliary lemmas and
+statement (Core's `intDist`, Core.lean:5930, only in auxiliary lemmas and
 proofs). `weylProgIco N R v r` is {h ∈ ℤ : N ≤ h < N+R, h ≡ v mod r}.
 
 Original paper definition/context (`article.txt:1263-1266`, verbatim TeX):
@@ -2639,7 +2639,7 @@ Statements depending on these definitions: Lemma 19.
 /-!
 ### D055 — `weylProgIco`
 
-`Core.lean:7074` · Used by: Lemma 19 (indirectly).
+`Core.lean:7076` · Used by: Lemma 19 (indirectly).
 
 ```lean
 noncomputable def weylProgIco (N : ℤ) (R : ℝ) (v r : ℤ) : Finset ℤ :=
@@ -2653,7 +2653,7 @@ Library terms: G25 `Finset.Icc`; G26 `Finset.filter`; G49 `a ≡ b [ZMOD n]`; G5
 /-!
 ### D056 — `weylProgSum`
 
-`Core.lean:7079` · Used by: Lemma 19.
+`Core.lean:7081` · Used by: Lemma 19.
 
 ```lean
 noncomputable def weylProgSum (alpha' beta : ℝ) (N : ℤ) (R : ℝ) (v r : ℤ) : ℂ :=
@@ -2724,7 +2724,7 @@ Statements depending on these definitions: Theorem 21, Lemma 24, Lemma 25, Lemma
 /-!
 ### D057 — `constraintRho`
 
-`Core.lean:9508` · Used by: Theorem 21, Lemma 24, Lemma 25, Lemma 26,
+`Core.lean:9510` · Used by: Theorem 21, Lemma 24, Lemma 25, Lemma 26,
 Proposition 27 (indirectly).
 
 ```lean
@@ -2738,7 +2738,7 @@ Library terms: G28 `Finset.card`; G29 `Finset.sup`; G45 `Int.toNat`.
 /-!
 ### D058 — `constraintGraph`
 
-`Core.lean:9511` · Used by: Theorem 21, Proposition 27 (indirectly).
+`Core.lean:9513` · Used by: Theorem 21, Proposition 27 (indirectly).
 
 ```lean
 def constraintGraph (k : ℕ) (W : Finset ((Fin k → ℤ) × ℤ)) : SimpleGraph (Fin k) :=
@@ -2792,7 +2792,7 @@ Statements depending on these definitions: Theorem 21, Proposition 27.
 /-!
 ### D059 — `IsBalancedWrt`
 
-`Core.lean:9552` · Used by: Proposition 27; Theorem 21 (indirectly).
+`Core.lean:9554` · Used by: Proposition 27; Theorem 21 (indirectly).
 
 ```lean
 def IsBalancedWrt (k R : ℕ) (W : Finset ((Fin k → ℤ) × ℤ)) (lo hi : Fin k → ℤ) : Prop :=
@@ -2863,7 +2863,7 @@ Statements depending on these definitions: Theorem 21.
 /-!
 ### D060 — `BalancedDecompData`
 
-`Core.lean:13945` · Used by: Theorem 21.
+`Core.lean:13951` · Used by: Theorem 21.
 
 ```lean
 def BalancedDecompData (k R : ℕ) (c : Fin k → ℕ) (W : Finset ((Fin k → ℤ) × ℤ))
@@ -2963,7 +2963,7 @@ not.
 /-!
 ### Paper context: All fields of a piece and its lexicographic index (`pieces`)
 
-Core.lean's `Piece.IsShort`, `Piece.IsLong` (Core.lean:9595, 9598) occur in
+Core.lean's `Piece.IsShort`, `Piece.IsLong` (Core.lean:9597, 9600) occur in
 no statement and are not shown.
 
 Lean definitions for this comparison: `Piece`, `Piece.quad`, `Piece.side`, `Piece.minSide`, `Piece.shortCoords`, `Piece.longCoords`, `Piece.IsMixed`, `Piece.mixedIneqs`, `Piece.nLong`, `Piece.nMix`, `Piece.index`.
@@ -2973,7 +2973,7 @@ Statements depending on these definitions: Lemma 24, Lemma 25, Lemma 26, Proposi
 /-!
 ### D061 — `Piece`
 
-`Core.lean:9572` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27.
+`Core.lean:9574` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27.
 
 ```lean
 structure Piece (d : ℕ) where
@@ -2995,7 +2995,7 @@ structure Piece (d : ℕ) where
 /-!
 ### D062 — `Piece.quad`
 
-`Core.lean:9586` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27
+`Core.lean:9588` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27
 (indirectly).
 
 ```lean
@@ -3007,7 +3007,7 @@ def Piece.quad {d : ℕ} (p : Piece d) (x : Fin d → ℤ) : ℤ :=
 /-!
 ### D063 — `Piece.side`
 
-`Core.lean:9589` · Used by: Lemma 26; Lemma 25, Proposition 27 (indirectly).
+`Core.lean:9591` · Used by: Lemma 26; Lemma 25, Proposition 27 (indirectly).
 
 ```lean
 def Piece.side {d : ℕ} (p : Piece d) (j : Fin d) : ℕ := boxSide d p.lo p.hi j
@@ -3017,7 +3017,7 @@ def Piece.side {d : ℕ} (p : Piece d) (j : Fin d) : ℕ := boxSide d p.lo p.hi 
 /-!
 ### D064 — `Piece.minSide`
 
-`Core.lean:9591` · Used by: Lemma 25, Lemma 26; Proposition 27 (indirectly).
+`Core.lean:9593` · Used by: Lemma 25, Lemma 26; Proposition 27 (indirectly).
 
 ```lean
 def Piece.minSide {d : ℕ} (p : Piece d) : ℕ :=
@@ -3031,7 +3031,7 @@ Library terms: G30 `Finset.inf'`.
 /-!
 ### D065 — `Piece.shortCoords`
 
-`Core.lean:9600` · Used by: Lemma 25, Proposition 27 (indirectly).
+`Core.lean:9602` · Used by: Lemma 25, Proposition 27 (indirectly).
 
 ```lean
 def Piece.shortCoords {d : ℕ} (p : Piece d) : Finset (Fin d) :=
@@ -3044,7 +3044,7 @@ Library terms: G26 `Finset.filter`.
 /-!
 ### D066 — `Piece.longCoords`
 
-`Core.lean:9603` · Used by: Lemma 25, Proposition 27 (indirectly).
+`Core.lean:9605` · Used by: Lemma 25, Proposition 27 (indirectly).
 
 ```lean
 def Piece.longCoords {d : ℕ} (p : Piece d) : Finset (Fin d) :=
@@ -3057,7 +3057,7 @@ Library terms: G26 `Finset.filter`.
 /-!
 ### D067 — `Piece.IsMixed`
 
-`Core.lean:9606` · Used by: Lemma 25; Proposition 27 (indirectly).
+`Core.lean:9608` · Used by: Lemma 25; Proposition 27 (indirectly).
 
 ```lean
 def Piece.IsMixed {d : ℕ} (p : Piece d) (q : (Fin d → ℤ) × ℤ) : Prop :=
@@ -3071,7 +3071,7 @@ Library terms: G32 `insert`; G42 `Set.Finite`.
 /-!
 ### D068 — `Piece.mixedIneqs`
 
-`Core.lean:9610` · Used by: Lemma 25, Proposition 27 (indirectly).
+`Core.lean:9612` · Used by: Lemma 25, Proposition 27 (indirectly).
 
 ```lean
 noncomputable def Piece.mixedIneqs {d : ℕ} (p : Piece d) :
@@ -3086,7 +3086,7 @@ Library terms: G26 `Finset.filter`.
 /-!
 ### D069 — `Piece.nLong`
 
-`Core.lean:9615` · Used by: Proposition 27; Lemma 25 (indirectly).
+`Core.lean:9617` · Used by: Proposition 27; Lemma 25 (indirectly).
 
 ```lean
 def Piece.nLong {d : ℕ} (p : Piece d) : ℕ := p.longCoords.card
@@ -3098,7 +3098,7 @@ Library terms: G28 `Finset.card`.
 /-!
 ### D070 — `Piece.nMix`
 
-`Core.lean:9617` · Used by: Proposition 27; Lemma 25 (indirectly).
+`Core.lean:9619` · Used by: Proposition 27; Lemma 25 (indirectly).
 
 ```lean
 noncomputable def Piece.nMix {d : ℕ} (p : Piece d) : ℕ := p.mixedIneqs.card
@@ -3110,7 +3110,7 @@ Library terms: G28 `Finset.card`.
 /-!
 ### D071 — `Piece.index`
 
-`Core.lean:9619` · Used by: Lemma 25.
+`Core.lean:9621` · Used by: Lemma 25.
 
 ```lean
 noncomputable def Piece.index {d : ℕ} (p : Piece d) : ℕ ×ₗ (ℕ ×ₗ ℕ) :=
@@ -3183,7 +3183,7 @@ Statements depending on these definitions: Lemma 24, Lemma 25, Lemma 26, Proposi
 /-!
 ### D072 — `IsTransition`
 
-`Core.lean:9688` · Used by: Lemma 24, Lemma 25; Lemma 26, Proposition 27
+`Core.lean:9690` · Used by: Lemma 24, Lemma 25; Lemma 26, Proposition 27
 (indirectly).
 
 ```lean
@@ -3200,7 +3200,7 @@ Library terms: G62 `Matrix.det`; G63 `Matrix.mulVec`.
 /-!
 ### D073 — `IsDecomposition`
 
-`Core.lean:9698` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27.
+`Core.lean:9700` · Used by: Lemma 24, Lemma 25, Lemma 26, Proposition 27.
 
 ```lean
 structure IsDecomposition {d M : ℕ} (p : Piece d) (q : Fin M → Piece d)
@@ -3256,7 +3256,7 @@ Coverage: `decomposition-component`.
 
 `Piece.prod` (written `p₁.prod p₂`) witnesses that (W₁⊕W₂, J₁×J₂, Q₁⊕Q₂,
 A₁+A₂) is a piece (Lemma 24(2)). Core.lean's block projections `leftPart`,
-`rightPart` (Core.lean:9907, 9910) occur only in auxiliary lemmas and
+`rightPart` (Core.lean:9909, 9912) occur only in auxiliary lemmas and
 proofs and are not shown. `sigmaPieceIndexEquiv` is only an indexing
 device. `lemma24` omits the size bound d|Φ|∞|Ψ|∞ for Φ_mΨ_{m,n}, which
 follows from `lemma24CompositionSizeBound`; `lemma24ProductSizeBound` is
@@ -3269,7 +3269,7 @@ Statements depending on these definitions: Lemma 24.
 /-!
 ### D074 — `padLeftVec`
 
-`Core.lean:9894` · Used by: Lemma 24 (indirectly).
+`Core.lean:9896` · Used by: Lemma 24 (indirectly).
 
 ```lean
 def padLeftVec (d₁ d₂ : ℕ) (w : Fin d₁ → ℤ) : Fin (d₁ + d₂) → ℤ :=
@@ -3282,7 +3282,7 @@ Library terms: G19 `Fin.append`.
 /-!
 ### D075 — `padRightVec`
 
-`Core.lean:9897` · Used by: Lemma 24 (indirectly).
+`Core.lean:9899` · Used by: Lemma 24 (indirectly).
 
 ```lean
 def padRightVec (d₁ d₂ : ℕ) (w : Fin d₂ → ℤ) : Fin (d₁ + d₂) → ℤ :=
@@ -3295,7 +3295,7 @@ Library terms: G19 `Fin.append`.
 /-!
 ### D076 — `oplusConstraints`
 
-`Core.lean:9900` · Used by: Lemma 24 (indirectly).
+`Core.lean:9902` · Used by: Lemma 24 (indirectly).
 
 ```lean
 noncomputable def oplusConstraints (d₁ d₂ : ℕ)
@@ -3312,7 +3312,7 @@ Library terms: G27 `Finset.image`; G32 `insert`.
 /-!
 ### D077 — `blockDiagMat`
 
-`Core.lean:9913` · Used by: Lemma 24.
+`Core.lean:9915` · Used by: Lemma 24.
 
 ```lean
 def blockDiagMat {d₁ d₂ : ℕ} (Φ₁ : Matrix (Fin d₁) (Fin d₁) ℤ)
@@ -3327,7 +3327,7 @@ Library terms: G20 `finSumFinEquiv`; G66 `Matrix.fromBlocks`.
 /-!
 ### D078 — `Piece.prod`
 
-`Core.lean:9971` · Used by: Lemma 24.
+`Core.lean:9973` · Used by: Lemma 24.
 
 ```lean
 noncomputable def Piece.prod {d₁ d₂ : ℕ} (p : Piece d₁) (p' : Piece d₂) :
@@ -3365,7 +3365,7 @@ Library terms: G19 `Fin.append`.
 /-!
 ### D079 — `sigmaPieceIndexEquiv`
 
-`Core.lean:9793` · Used by: Lemma 24.
+`Core.lean:9795` · Used by: Lemma 24.
 
 ```lean
 def sigmaPieceIndexEquiv {M : ℕ} (N : Fin M → ℕ) :
@@ -3520,7 +3520,7 @@ Statements depending on these definitions: Lemma 25.
 /-!
 ### D080 — `restrictVec`
 
-`Core.lean:10204` · Used by: Lemma 25 (indirectly).
+`Core.lean:10206` · Used by: Lemma 25 (indirectly).
 
 ```lean
 def restrictVec (d : ℕ) (S : Finset (Fin d)) (w : Fin d → ℤ) : Fin d → ℤ :=
@@ -3531,7 +3531,7 @@ def restrictVec (d : ℕ) (S : Finset (Fin d)) (w : Fin d → ℤ) : Fin d → �
 /-!
 ### D081 — `coordVec`
 
-`Core.lean:10239` · Used by: Lemma 25 (indirectly).
+`Core.lean:10241` · Used by: Lemma 25 (indirectly).
 
 ```lean
 def coordVec (d : ℕ) (j : Fin d) : Fin d → ℤ := fun s => if s = j then 1 else 0
@@ -3541,7 +3541,7 @@ def coordVec (d : ℕ) (j : Fin d) : Fin d → ℤ := fun s => if s = j then 1 e
 /-!
 ### D082 — `boxConstraints`
 
-`Core.lean:10241` · Used by: Lemma 25 (indirectly).
+`Core.lean:10243` · Used by: Lemma 25 (indirectly).
 
 ```lean
 noncomputable def boxConstraints (d : ℕ) (lo hi : Fin d → ℤ) :
@@ -3557,7 +3557,7 @@ Library terms: G27 `Finset.image`; G32 `insert`.
 /-!
 ### D083 — `Piece.shortPart`
 
-`Core.lean:10335` · Used by: Lemma 25 (indirectly).
+`Core.lean:10337` · Used by: Lemma 25 (indirectly).
 
 ```lean
 noncomputable def Piece.shortPart {d : ℕ} (p : Piece d) (w : Fin d → ℤ) : Fin d → ℤ :=
@@ -3568,7 +3568,7 @@ noncomputable def Piece.shortPart {d : ℕ} (p : Piece d) (w : Fin d → ℤ) : 
 /-!
 ### D084 — `Piece.longPart`
 
-`Core.lean:10338` · Used by: Lemma 25.
+`Core.lean:10340` · Used by: Lemma 25.
 
 ```lean
 noncomputable def Piece.longPart {d : ℕ} (p : Piece d) (w : Fin d → ℤ) : Fin d → ℤ :=
@@ -3579,7 +3579,7 @@ noncomputable def Piece.longPart {d : ℕ} (p : Piece d) (w : Fin d → ℤ) : F
 /-!
 ### D085 — `boxMinAffine`
 
-`Core.lean:10298` · Used by: Lemma 25 (indirectly).
+`Core.lean:10300` · Used by: Lemma 25 (indirectly).
 
 Implementation helper, no paper definition.
 
@@ -3592,7 +3592,7 @@ noncomputable def boxMinAffine (d : ℕ) (lo hi : Fin d → ℤ) (w : Fin d → 
 /-!
 ### D086 — `Piece.splitLambda`
 
-`Core.lean:10345` · Used by: Lemma 25 (indirectly).
+`Core.lean:10347` · Used by: Lemma 25 (indirectly).
 
 ```lean
 noncomputable def Piece.splitLambda {d : ℕ} (p : Piece d) (w : Fin d → ℤ) (b : ℤ) : ℤ :=
@@ -3603,7 +3603,7 @@ noncomputable def Piece.splitLambda {d : ℕ} (p : Piece d) (w : Fin d → ℤ) 
 /-!
 ### D087 — `Piece.splitPlusW`
 
-`Core.lean:10356` · Used by: Lemma 25.
+`Core.lean:10358` · Used by: Lemma 25.
 
 ```lean
 noncomputable def Piece.splitPlusW {d : ℕ} (p : Piece d) (w : Fin d → ℤ) (b : ℤ) :
@@ -3619,7 +3619,7 @@ Library terms: G32 `insert`.
 /-!
 ### D088 — `Piece.splitMinusW`
 
-`Core.lean:10362` · Used by: Lemma 25.
+`Core.lean:10364` · Used by: Lemma 25.
 
 ```lean
 noncomputable def Piece.splitMinusW {d : ℕ} (p : Piece d) (w : Fin d → ℤ) (b : ℤ) :
@@ -3923,7 +3923,7 @@ Statements depending on these definitions: Proposition 28.
 /-!
 ### D089 — `foldPrefixSum`
 
-`Core.lean:14875` · Used by: Proposition 28 (indirectly).
+`Core.lean:14881` · Used by: Proposition 28 (indirectly).
 
 ```lean
 def foldPrefixSum (k : ℕ) (x : Fin k → ℕ) (i : ℕ) : ℕ :=
@@ -3936,7 +3936,7 @@ Library terms: G15 `x.val`; G26 `Finset.filter`.
 /-!
 ### D090 — `foldSourcePiece`
 
-`Core.lean:14881` · Used by: Proposition 28.
+`Core.lean:14887` · Used by: Proposition 28.
 
 ```lean
 noncomputable def foldSourcePiece (k N m : ℕ) : Finset (Fin k → ℕ) := by
@@ -3952,7 +3952,7 @@ Library terms: G25 `Finset.Icc`; G26 `Finset.filter`.
 /-!
 ### D091 — `foldCoord`
 
-`Core.lean:14975` · Used by: Proposition 28 (indirectly).
+`Core.lean:14981` · Used by: Proposition 28 (indirectly).
 
 ```lean
 def foldCoord {k : ℕ} (x : Fin k → ℤ) (i : ℕ) : ℤ :=
@@ -3963,7 +3963,7 @@ def foldCoord {k : ℕ} (x : Fin k → ℤ) (i : ℕ) : ℤ :=
 /-!
 ### D092 — `foldMap`
 
-`Core.lean:14978` · Used by: Proposition 28.
+`Core.lean:14984` · Used by: Proposition 28.
 
 ```lean
 def foldMap (k N m : ℕ) (x : Fin k → ℤ) : Fin k → ℤ := fun t =>
@@ -3984,7 +3984,7 @@ Library terms: G15 `x.val`; G25 `Finset.Icc`.
 /-!
 ### D093 — `foldMapGlobal`
 
-`Core.lean:14989` · Used by: Proposition 28.
+`Core.lean:14995` · Used by: Proposition 28.
 
 ```lean
 noncomputable def foldMapGlobal (k N : ℕ) (x : Fin k → ℕ) : Fin k → ℤ := by
@@ -4001,7 +4001,7 @@ Library terms: G44 `Nat.find`.
 /-!
 ### D094 — `foldTargetBase`
 
-`Core.lean:14996` · Used by: Proposition 28.
+`Core.lean:15002` · Used by: Proposition 28.
 
 ```lean
 def foldTargetBase (k N : ℕ) : Set (Fin k → ℤ) :=
@@ -4015,7 +4015,7 @@ Library terms: G25 `Finset.Icc`.
 /-!
 ### D095 — `foldTargetPiece`
 
-`Core.lean:15000` · Used by: Proposition 28.
+`Core.lean:15006` · Used by: Proposition 28.
 
 ```lean
 def foldTargetPiece (k N m : ℕ) : Set (Fin k → ℤ) :=
@@ -4034,7 +4034,7 @@ Library terms: G25 `Finset.Icc`.
 /-!
 ### D096 — `foldInv`
 
-`Core.lean:15009` · Used by: Proposition 28.
+`Core.lean:15015` · Used by: Proposition 28.
 
 ```lean
 def foldInv (k N m : ℕ) (y : Fin k → ℤ) : Fin k → ℤ := fun t =>
@@ -4089,12 +4089,12 @@ affine with a 0/1 matrix of determinant ±1.
 /-!
 ### Paper context: The recursive simplex-to-box map (`fold_recursion`)
 
-Core.lean implements U_{k,N} as `foldUN` (Core.lean:16464, totalized) with
-the auxiliary `foldStage` (Core.lean:16472); neither occurs in a
+Core.lean implements U_{k,N} as `foldUN` (Core.lean:16470, totalized) with
+the auxiliary `foldStage` (Core.lean:16478); neither occurs in a
 `Compatibility.lean` statement, so neither is shown. The proof of
-Proposition 4 (`prop_UNmap_explicit`, Core.lean:17366) takes as U N the
+Proposition 4 (`prop_UNmap_explicit`, Core.lean:17372) takes as U N the
 map x ↦ `foldUN k N` of the coordinatewise `toNat` of x, cast to ℤ
-(Core.lean:17060); `proposition4` only asserts that some U exists, and the
+(`a4FreshUnit_a4UNU`, Core.lean:17066); `proposition4` only asserts that some U exists, and the
 Theorem 5 and Proposition 10 endpoints do not name `foldUN` (see their
 notes). The recursion is not part of Proposition 28.
 
@@ -4913,7 +4913,7 @@ Paper-numbered aliases in `Compatibility.lean` (not shown; each is
 - `Paper.Lemma16.coefficient` = `sgnCoeff` (D049)
 - `Paper.Lemma16.indexSet` = `sgnIndex` (D050)
 - `Paper.Lemma24.productPiece` = `Piece.prod` (D078)
-- `Paper.Proposition9.indexEquiv` = `AllDegreesProof.goodEquiv` (`Core.lean:3379`;
+- `Paper.Proposition9.indexEquiv` = `AllDegreesProof.goodEquiv` (`Core.lean:3381`;
   not shown, used only by this alias)
 -/
 

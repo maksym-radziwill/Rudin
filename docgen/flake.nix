@@ -84,6 +84,7 @@
                 ./preamble.tex
                 ./make.sh
                 ./check.py
+                ./citations.py
               ];
             };
             nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -91,7 +92,7 @@
             installPhase = ''
               runHook preInstall
               share=$out/share/render-statements
-              install -Dm644 -t $share build.py preamble.tex check.py
+              install -Dm644 -t $share build.py preamble.tex check.py citations.py
               install -Dm755 -t $share make.sh
               makeWrapper $share/make.sh $out/bin/render-statements \
                 --prefix PATH : ${lib.makeBinPath d.runtime} \
@@ -100,6 +101,8 @@
               makeWrapper ${d.python}/bin/python3 $out/bin/render-statements-check \
                 --prefix PATH : ${lib.makeBinPath [ pkgs.poppler-utils ]} \
                 --add-flags "-I $share/check.py"
+              makeWrapper ${d.python}/bin/python3 $out/bin/render-statements-citations \
+                --add-flags "-I $share/citations.py"
               runHook postInstall
             '';
             meta = {
@@ -121,12 +124,17 @@
           default = {
             type = "app";
             program = "${p}/bin/render-statements";
-            meta.description = "Build formalization.pdf: render-statements <PaperFormalization dir> <build dir>";
+            meta.description = "Build formalization.pdf: render-statements <PaperFormalization dir> [build dir]";
           };
           check = {
             type = "app";
             program = "${p}/bin/render-statements-check";
             meta.description = "Check a rendered PDF against its source: check <Statements.lean> <formalization.pdf>";
+          };
+          citations = {
+            type = "app";
+            program = "${p}/bin/render-statements-citations";
+            meta.description = "Verify (or --fix) the Core.lean/Compatibility.lean line citations in Statements.lean";
           };
         }
       );

@@ -9,10 +9,13 @@ usage: check.py Statements.lean formalization.pdf
 2. The prose of the doc comments is aligned word by word with the PDF text. The renderer
    restyles a few things on purpose (box labels in capitals, "Paper context" headings shown
    as key + title); those are normalised here, so any word left unmatched is reported.
+3. Every source-line citation in Statements.lean ("`Core.lean:621`", "(Core.lean:17679)")
+   points at the code or declaration it names (see citations.py).
 
 Exit status 0 = PASS, 1 = FAIL.
 """
-import difflib, re, subprocess, sys, unicodedata
+import difflib, re, runpy, subprocess, sys, unicodedata
+from pathlib import Path
 
 src = unicodedata.normalize('NFC', open(sys.argv[1], encoding='utf-8').read())
 txt = subprocess.run(['pdftotext', '-enc', 'UTF-8', sys.argv[2], '-'],
@@ -75,6 +78,15 @@ print(f'prose words checked: {len(words)}; matched in order: {matched}; unmatche
 for u in unmatched[:40]:
     print('   -', u[:150])
 
-ok = not missing and not unmatched
+# ---------------------------------------------------------------- 3. citations
+cit = runpy.run_path(str(Path(__file__).resolve().parent / 'citations.py'), run_name='citations')
+stmt = Path(sys.argv[1])
+cfind = cit['check'](stmt.read_text(encoding='utf-8'), cit['load_sources'](stmt.parent))
+cbad = [f for f in cfind if f['status'] != 'ok']
+print(f'source citations checked: {len(cfind)}; wrong: {len(cbad)}')
+for f in cbad[:20]:
+    print(f"   - {f['what']}: cites {f['file']}:{f['cited']} — {f['status']}")
+
+ok = not missing and not unmatched and not cbad
 print('PASS' if ok else 'FAIL')
 sys.exit(0 if ok else 1)
