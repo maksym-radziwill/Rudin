@@ -1,5 +1,7 @@
 import Mathlib
 
+set_option linter.all false
+
 open scoped Matrix
 
 /-- The equivalence used to glue the two halves of the recursive construction. -/
@@ -4425,7 +4427,7 @@ private lemma agent4_indicator_product {ι : Type*} (S : Finset ι) (f : ι → 
     rw [he]
     simp
   · rw [if_neg h]
-    push_neg at h
+    push Not at h
     obtain ⟨i, hi, hneg⟩ := h
     have he : (∏ i ∈ S, (1 + (Int.sign (2 * f i + 1) : ℝ))) = 0 := by
       apply Finset.prod_eq_zero hi
@@ -6702,7 +6704,7 @@ theorem sum_inv_intDist_le_of_separated
     convert round_le (x e - x d) (round (x e) - round (x d)) using 1
     congr 1
     dsimp [y]
-    push_cast <;> ring
+    push_cast <;> ring_nf
   have hordered (d e : ℕ) (hd : d ∈ S) (he : e ∈ S) (hde : d < e) :
       δ ≤ |y e - y d| := by
     obtain ⟨hd1,hdR⟩ := Finset.mem_Ico.mp hd
@@ -6857,7 +6859,7 @@ private lemma agent4WG_local_sq_ok (A M α : ℝ) (hA : 1 ≤ A) (hM : 1 ≤ M)
       have hedr : e-d < R := by omega
       have hh := hdio (e-d) hed hedr
       rw [Nat.cast_sub (by omega : d ≤ e)] at hh
-      convert hh using 1 <;> ring)
+      convert hh using 1 <;> ring_nf)
   have hw := weyl_differencing_normSq_le α' β R hR hnz
   apply hw.trans
   apply add_le_add_right
@@ -14299,7 +14301,7 @@ private lemma a4boxOct14_component_v2 (k R : ℕ) (α : ℝ) (B : ℝ) (hB : 1 �
       obtain ⟨n,hn⟩ := Nat.exists_eq_add_of_le hdpos
       rw [hn,pow_add,pow_one]
       exact le_mul_of_one_le_right (by linarith) (one_le_pow₀ hB)
-    · push_neg at hconnected
+    · push Not at hconnected
       obtain ⟨q,q',hqq'⟩ := hconnected
       let S := Finset.univ.filter (fun j => (constraintGraph d p.W).Reachable q j)
       have hS : S.Nonempty := ⟨q,Finset.mem_filter.mpr ⟨Finset.mem_univ _,SimpleGraph.Reachable.refl q⟩⟩

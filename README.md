@@ -1,9 +1,8 @@
 # Rudin's problem: Lean formalization
 
-A Lean 4 formalization of 
-```
-https://arxiv.org/abs/2610.14160
-```
+A Lean 4 formalization of F. Gonçalves, J. P. Ferreira and M. Radziwiłł,
+*Uniformly bounded orthonormal bases of homogeneous polynomials on the complex
+sphere*, [arXiv:2610.14160](https://arxiv.org/abs/2610.14160).
 
 ## Layout
 
@@ -12,11 +11,15 @@ https://arxiv.org/abs/2610.14160
 | `PaperFormalization/Core.lean` | the implementation |
 | `PaperFormalization/Compatibility.lean` | wrappers |
 | `PaperFormalization/Statements.lean` | each paper statement, beside its full Lean type |
+| `Challenge.lean` | the trusted statement of Theorem 1, for `lake comparator` |
+| `comparator.json` | the `lake comparator` configuration |
 | `paper.tex` | a copy of the paper |
 | `formalization.pdf` | a .pdf rendering of Statements.lean |
 | `docgen/` | scripts for generating `formalization.pdf` from `Statements.lean` |
 
-`Statements.lean` and `formalization.pdf` are meant for semantic checking. 
+`Statements.lean` and `formalization.pdf` are meant for semantic checking. For
+Theorem 1, the semantic check can be narrowed to `Challenge.lean`; see
+[Checking Theorem 1 with comparator](#checking-theorem-1-with-comparator).
 
 ## Build
 
@@ -26,6 +29,30 @@ The project builds as an ordinary Lake project against Lean and Mathlib:
 lake exe cache get
 lake build
 ```
+
+## Checking Theorem 1 with comparator
+
+Theorem 1 is the paper's answer to Rudin's problem. `Challenge.lean` restates it,
+with `sorry` as the proof, together with the definitions its statement uses:
+`degIdx`, `PolySpaceH`, `polyEval` and `polyInner`. `lake comparator` judges the
+formalization against that file:
+
+```bash
+lake exe cache get
+lake comparator
+```
+
+## Checking all results with `lake check`
+
+```bash
+lake exe cache get
+lake check
+```
+
+`lake check` builds the project's default targets in the same sandbox as
+comparator, exports them, replays the export through Lean's kernel, and fails
+if anything uses an axiom other than `propext`, `Quot.sound` and
+`Classical.choice`. It covers every numbered result, not only Theorem 1.
 
 ## The numbered results
 
@@ -96,7 +123,8 @@ Two, both as stated in the paper's own "Use of generative AI" section:
 
 1. **The inner product.** It is defined by Rudin's monomial formula
    (`polyInner`, i.e. `def:innerprod`), not as an integral over the sphere
-   S^{2K−1}. The two agree, but the agreement is not formalized.
+   S^{2K−1}. The two agree, but the agreement is not formalized. `Challenge.lean`
+   uses the same formula.
 2. **Proposition 4 has one proof, not two.** Section 5 gives two proofs of the
    simplex–box equidecomposition: an implicit one via unimodular
    triangulations and Ehrhart theory (§5.1), and an explicit constructive one

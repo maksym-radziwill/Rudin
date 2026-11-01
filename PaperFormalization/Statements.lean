@@ -1,5 +1,7 @@
 import PaperFormalization.Compatibility
 
+set_option linter.all false
+
 /-!
 # A self-contained reading of the paper statements and their Lean encodings
 
@@ -49,11 +51,6 @@ Coverage tags (how endpoints are presented, not an axiom audit):
   structure, displayed for comparison, not certified equivalent to the paper.
 
 Gaps: Proposition 9 and Lemma 11 are `component-only`.
-
-The wrapper types are checked when the file is compiled; this file alone is
-no evidence of proof completeness. For that, see `AXIOMS.txt` in the project
-root: `#print axioms` on every exported wrapper, which must report only
-`propext`, `Classical.choice` and `Quot.sound`.
 
 ## Reading the encodings
 

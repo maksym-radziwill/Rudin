@@ -1,5 +1,7 @@
 import PaperFormalization.Core
 
+set_option linter.all false
+
 /-!
 # Paper-numbered compatibility API
 
