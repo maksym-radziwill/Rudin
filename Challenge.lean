@@ -5,11 +5,10 @@ import Mathlib
 
 The trusted statement for `lake comparator` (configured by `comparator.json`).
 
-The four definitions below are copied verbatim from `PaperFormalization/Core.lean`
-(lines 621–632), in the same context: `import Mathlib` and `open scoped Matrix`, at the
-root namespace. The theorem is copied verbatim from `PaperFormalization/Statements.lean`
-(lines 474–481), inside `namespace PaperReview` as there, with its proof replaced by
-`sorry`.
+The four definitions below are copied verbatim from `PaperFormalization/Core.lean`, 
+in the same context: `import Mathlib` and `open scoped Matrix`, at the root namespace. 
+The theorem is copied verbatim from `PaperFormalization/Statements.lean`
+inside `namespace PaperReview` as there, with its proof replaced by `sorry`.
 
 Comparator checks that the solution module (`PaperFormalization.Statements`) proves
 `PaperReview.theorem1` with exactly this statement, that the definitions it uses are
