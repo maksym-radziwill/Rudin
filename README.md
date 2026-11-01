@@ -56,7 +56,7 @@ if anything uses an axiom other than `propext`, `Quot.sound` and
 
 ## The numbered results
 
-| Paper | Lean endpoints |
+| Paper | Lean endpoints in `Statements.lean` |
 | --- | --- |
 | Theorem 1 (`thm:onb`) | `theorem1` |
 | Theorem 2 (`thm:box`) | `theorem2` |
