@@ -73,9 +73,8 @@ open scoped Matrix
 These conventions (G01–G14) apply to all Lean code below and are not listed per
 block. Text after `by` is a proof and never changes a value; `f (M := e)`
 supplies the argument named M. Entries cite the declaration that fixes the
-meaning (Mathlib v4.35.0, Lean v4.35.0, as pinned by
-`lean-toolchain`; the environment available here for checking the file was Lean
-4.34.0-rc2, one patch release behind -- see README.md).
+meaning (Lean v4.35.0 and Mathlib v4.35.0, as pinned by `lean-toolchain` and
+`lake-manifest.json`).
 
 ### G01 — `Fin n`
 
@@ -1204,8 +1203,10 @@ Cross-references: `prop:UNmap` is Proposition 4; `thm:box` is Theorem 2.
 Reading note: `theorem5OrthonormalBasis`, `theorem5UniformBound` and
 `theorem5` are parts 1, 2 and 3. Parts 1 and 2 quantify over every family U
 with `IsUNmap k R M (U M)` for all M ≥ 1 with lcm_k ∣ M (part 1 also over
-every R): at least as strong as a statement for one fixed U_N. In part 2 the
-R and A, in part 3 the C, depend only on (k, a). Part 3 indexes its basis by
+every R): at least as strong as a statement for one fixed U_N. In part 2, A
+is chosen after k, a and R, so A = A(k, a, R); at the R that Proposition 4
+supplies, which depends only on k, this is the paper's A(K, a). In part 3,
+C depends only on (k, a). Part 3 indexes its basis by
 `Fin ((N + k).choose k)`, of size dim H_N = binom(N+K−1,K−1) (K = k+1).
 -/
 
@@ -1793,9 +1794,10 @@ Coverage: `direct`.
 
 Cross-references: `eq:shiftedBasis` is the display in Definition 8.
 
-Reading note: A and R depend only on k and a, so A = A(K,a). The bound holds
-for every family U with `IsUNmap k R M (U M)` for all M ≥ 1 with lcm_k ∣ M
-(the paper uses one U_{N′}). If N < lcm_k, then N′ = 0 and `U 0` is
+Reading note: A is chosen after k, a and R, so A = A(k, a, R); at the R that
+Proposition 4 supplies, which depends only on k, this is the paper's A(K, a).
+The bound holds for every family U with `IsUNmap k R M (U M)` for all M ≥ 1
+with lcm_k ∣ M (the paper uses one U_{N′}). If N < lcm_k, then N′ = 0 and `U 0` is
 unconstrained, but `boxB k 0` = {0} forces l = 0, and the polynomial is
 √binom(N+k,k)·e(αN²)·z_K^N, bounded on the sphere in terms of k. `hbox`,
 `hUN` stand for the paper's standing assumption here (“Throughout this
@@ -1926,8 +1928,10 @@ exact and `faceScale k N i`² is the paper's c_{N,i}² (K = k+1).
 `lemma11Isometry` assumes only i ≤ N (no k ≥ 1, N ≥ 1): at k = 0 the `k-1`
 of `faceScale` and the `K - 1` of `polyInner k (N-i)` truncate to 0.
 `lemma11SphereBound` needs no basis: it bounds the lift of any v with
-|v| ≤ C on the smaller sphere by C·√(binom(N+k,k)/binom(N−i+k−1,k−1)), a
-ratio asymptotic to N/k for fixed k, i; for N ≥ 1 this is `eq:facesup`.
+|v| ≤ C on the smaller sphere by C·√(binom(N+k,k)/binom(N−i+k−1,k−1)). The
+ratio is asymptotic to N/k for fixed k, i, and is ≪_{k,i} N for all N ≥ 1, so
+the bound implies the C·N^{1/2} of `eq:facesup`; that last estimate is
+elementary but not formalized.
 `lemma11Evaluation` identifies `faceLift k N i c` (i ≤ N) with the paper's
 map ψ ↦ c·z_K^i·ψ. Not displayed: c_{N,i} ≍_{K,i} N^{(i+1)/2}; that the map
 is onto z_K^i H_{K−1,N−i} (part 1); that the c_{N,i}·z_K^i·ψ_ν form an

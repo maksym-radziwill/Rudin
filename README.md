@@ -139,14 +139,16 @@ Two results are formalized in a weaker form than stated.
   it by a dimension count; `Compatibility.lean` exports only the index
   bijection for that count (`Proposition9.indexEquiv`), and the orthogonality
   (`proposition9Orthogonality`). There is deliberately no `Paper.proposition9`.
-- **Lemma 11** is missing four things: the size c_{N,i} ≍_{K,i} N^{(i+1)/2};
-  that the lift map is **onto** z_K^i H_{K−1,N−i} (part 1); that the
-  c_{N,i}·z_K^i·ψ_ν form an orthonormal **basis** of it (part 2); and the
-  N^{1/2} form of the sup-norm bound — `lemma11SphereBound` gives
-  C·√(binom(N+k,k)/binom(N−i+k−1,k−1)), a ratio asymptotic to N/k for fixed
-  k and i, rather than the N^{1/2} of `eq:facesup`. What is formalized is
-  `lemma11Isometry`, `lemma11SphereBound` and `lemma11Evaluation`. There is
-  deliberately no `Paper.lemma11`.
+- **Lemma 11** is missing three things: the size c_{N,i} ≍_{K,i} N^{(i+1)/2};
+  that the lift map is **onto** z_K^i H_{K−1,N−i} (part 1); and that the
+  c_{N,i}·z_K^i·ψ_ν form an orthonormal **basis** of it (part 2). Its sup-norm
+  bound is formalized with an explicit factor in place of N^{1/2}:
+  `lemma11SphereBound` gives C·√(binom(N+k,k)/binom(N−i+k−1,k−1)). That ratio
+  is asymptotic to N/k for fixed k and i and is ≪_{k,i} N for all N ≥ 1, so
+  the bound implies the C·N^{1/2} of `eq:facesup`; this last estimate is
+  elementary but not formalized. What is formalized is `lemma11Isometry`,
+  `lemma11SphereBound` and `lemma11Evaluation`. There is deliberately no
+  `Paper.lemma11`.
 
 ## Harmless differences
 
