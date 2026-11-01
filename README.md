@@ -14,6 +14,7 @@ https://arxiv.org/abs/2610.14160
 | `PaperFormalization/Statements.lean` | each paper statement, beside its full Lean type |
 | `paper.tex` | a copy of the paper |
 | `formalization.pdf` | a .pdf rendering of Statements.lean |
+| `docgen/` | scripts for generating `formalization.pdf` from `Statements.lean` |
 
 `Statements.lean` and `formalization.pdf` are meant for semantic checking. 
 

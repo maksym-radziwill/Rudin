@@ -1003,7 +1003,7 @@ every s ≤ k divides M.
 
 `IsUNmap` has ℕ-valued vectors, so it uses `polyP`, not `polyPZ`. Its
 source-piece clause has the unique-membership weakness of
-`Paper.definition3`, but its `Set.BijOn` is a true bijection. It occurs as a
+`Paper.definition3Weak`, but its `Set.BijOn` is a true bijection. It occurs as a
 hypothesis (`hU` of `theorem5OrthonormalBasis`, the U-hypotheses of
 `theorem5UniformBound` and `proposition10`, and inside both `PropUNmap`s),
 where its looseness can only strengthen them; the existence conjuncts of

@@ -1,0 +1,226 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=18mm,right=18mm,top=21mm,bottom=22mm,headheight=14pt,headsep=7mm,footskip=10mm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{txfonts}            % Times-like math, close to the paper's pslatex + newtxmath
+\usepackage{latexsym}
+\usepackage[mathscr]{euscript}  % as in paper.tex
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[no-math]{fontspec}
+\setmainfont{FreeSerif}[
+  Path=@FREEFONT_DIR@, Extension=.ttf,
+  UprightFont=*, ItalicFont=*Italic, BoldFont=*Bold, BoldItalicFont=*BoldItalic,
+  Ligatures=TeXOff]
+\setsansfont{Inter}[
+  Path=@INTER_DIR@, Extension=.otf,
+  UprightFont=*-Regular, BoldFont=*-SemiBold, ItalicFont=*-Italic, BoldItalicFont=*-SemiBoldItalic,
+  Scale=0.88, Ligatures=TeXOff, RawFeature={-calt;-case}]   % contextual alternates map to private-use code points in the text layer
+\setmonofont{DejaVuSansMono}[
+  Path=@DEJAVU_DIR@, Extension=.ttf,
+  UprightFont=*, BoldFont=*-Bold, ItalicFont=*-Oblique, BoldItalicFont=*-BoldOblique,
+  Scale=0.84]
+% font directories (@…@) are filled in by build.py from FREEFONT_DIR, DEJAVU_DIR, INTER_DIR
+% per-character fallback fonts (XeTeX has no automatic font fallback)
+\newfontfamily\FBfs{FreeSerif}[Path=@FREEFONT_DIR@, Extension=.ttf,
+  UprightFont=*, ItalicFont=*Italic, BoldFont=*Bold, BoldItalicFont=*BoldItalic]
+\newfontfamily\FBfm{FreeMono}[Path=@FREEFONT_DIR@, Extension=.ttf,
+  UprightFont=*, ItalicFont=*Oblique, BoldFont=*Bold, BoldItalicFont=*BoldOblique, Scale=0.84]
+\newfontfamily\FBdvs{DejaVuSans}[Path=@DEJAVU_DIR@, Extension=.ttf,
+  UprightFont=*, ItalicFont=*-Oblique, BoldFont=*-Bold, BoldItalicFont=*-BoldOblique, Scale=0.82]
+\usepackage{newunicodechar}
+\input{fallback.tex}
+
+\usepackage{xcolor}
+\definecolor{ink}{HTML}{1F2328}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{faint}{HTML}{9CA3AF}
+\definecolor{accent}{HTML}{1E3A5F}
+\definecolor{linkc}{HTML}{2155A6}
+\definecolor{paperbg}{HTML}{FBF7EE}
+\definecolor{paperrule}{HTML}{B8892E}
+\definecolor{paperlab}{HTML}{7C5512}
+\definecolor{leanbg}{HTML}{F1F5FB}
+\definecolor{leanrule}{HTML}{2F5D9A}
+\definecolor{defbg}{HTML}{F7F7F4}
+\definecolor{defframe}{HTML}{D6D6CF}
+\definecolor{miscbg}{HTML}{F4F4F2}
+\definecolor{synkw}{HTML}{1E3A8A}
+\definecolor{synlog}{HTML}{9A3412}
+\definecolor{syntype}{HTML}{0F6466}
+\definecolor{synproof}{HTML}{7A808A}
+\definecolor{syncomment}{HTML}{6B7280}
+\definecolor{chipgreenbg}{HTML}{E6F2EA}\definecolor{chipgreen}{HTML}{1D6B3A}
+\definecolor{chipbluebg}{HTML}{E8EEF7}\definecolor{chipblue}{HTML}{294C7A}
+\definecolor{chipamberbg}{HTML}{FCEFD3}\definecolor{chipamber}{HTML}{8A5300}
+\color{ink}
+
+\usepackage{fvextra}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+\usepackage{microtype}
+\usepackage[newcommands]{ragged2e}
+\setlength{\RaggedRightRightskip}{0pt plus 1fil}
+\setlength{\RaggedRightParindent}{0pt}
+\setlength{\JustifyingParindent}{0pt}
+\AtBeginDocument{\RaggedRight}
+\hyphenpenalty=10000 \exhyphenpenalty=10000   % never hyphenate identifiers in prose
+\usepackage[hidelinks,unicode,bookmarksnumbered=false,pdfusetitle]{hyperref}
+\usepackage{bookmark}
+\hypersetup{colorlinks=true,linkcolor=linkc,urlcolor=linkc,citecolor=linkc,
+  pdfauthor={Rendered from PaperFormalization/Statements.lean},
+  pdftitle={Statements.lean: the paper statements and their Lean encodings},
+  bookmarksopen=true,bookmarksopenlevel=1}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1.5pt minus 1pt}
+\linespread{1.06}
+\emergencystretch=3em
+\tolerance=2000
+\hbadness=3000
+\raggedbottom
+\setlist{itemsep=2pt,topsep=3pt,parsep=1pt,leftmargin=1.4em}
+\setlist[itemize]{label={\color{muted}\textbullet}}
+
+% ---------- break opportunity inside code spans ----------
+\newcommand\BO{\penalty300\relax}
+\newcommand\nohy[1]{{\language=255 #1}}
+\DeclareRobustCommand\lc[1]{\texttt{#1}}
+\DeclareRobustCommand\lclink[2]{\hyperlink{#1}{\texttt{#2}}}
+
+% ---------- Lean syntax classes ----------
+\newcommand\LK[1]{\textcolor{synkw}{\textbf{#1}}}
+\newcommand\LL[1]{\textcolor{synlog}{#1}}
+\newcommand\LT[1]{\textcolor{syntype}{#1}}
+\newcommand\LN[1]{#1}
+\newcommand\LC[1]{\textcolor{syncomment}{\textit{#1}}}
+\newcommand\LP[1]{\textcolor{synproof}{#1}}
+\newcommand\LD[2]{\hyperlink{#1}{\textcolor{linkc}{#2}}}
+\newcommand\LBS{\char"5C\relax}
+\newcommand\LLB{\char"7B\relax}
+\newcommand\LRB{\char"7D\relax}
+
+\fvset{fontsize=\normalsize}
+\DefineVerbatimEnvironment{LeanVerb}{Verbatim}{%
+  commandchars=\\\{\},breaklines=true,breakautoindent=true,breakindent=1.5em,
+  breaksymbolleft={\textcolor{paperrule}{\ttfamily\scriptsize\symbol{"21AA}}},
+  breaksymbolsepleft=2pt,
+  numbers=left,numbersep=16pt,
+  formatcom={\color{ink}},
+  numberblanklines=true}
+\renewcommand\theFancyVerbLine{\textcolor{faint}{\sffamily\fontsize{6.2}{7}\selectfont\arabic{FancyVerbLine}}}
+\DefineVerbatimEnvironment{TexVerb}{Verbatim}{%
+  breaklines=true,breakanywhere=true,breakautoindent=false,
+  breaksymbolleft={\textcolor{paperrule}{\ttfamily\scriptsize\symbol{"21AA}}},
+  numbers=left,numbersep=16pt,fontsize=\small}
+\DefineVerbatimEnvironment{ProseVerb}{Verbatim}{%
+  xleftmargin=1.8em,fontsize=\normalsize,breaklines=true}
+
+% ---------- boxes ----------
+\newcommand\boxlabel[3]{% color, label, meta
+  {\sffamily\fontsize{7.2}{9}\selectfont\color{#1}\textbf{\MakeUppercase{#2}}%
+   \ifstrempty{#3}{}{\hspace{0.6em}{\mdseries\color{muted}#3}}}\par\smallskip}
+\newtcolorbox{paperbox}[2]{enhanced,breakable,colback=paperbg,colframe=paperbg,
+  boxrule=0pt,leftrule=2.4pt,arc=0pt,outer arc=0pt,
+  borderline west={2.4pt}{0pt}{paperrule},
+  left=9pt,right=9pt,top=6pt,bottom=7pt,before skip=8pt,after skip=10pt,
+  halign=justify,before upper={\boxlabel{paperlab}{#1}{#2}\PaperMacros\addfontfeatures{Ligatures=TeX}\setlength{\parskip}{3pt}\hyphenpenalty=50 \exhyphenpenalty=50 \justifying}}
+\newtcolorbox{texverbbox}[2]{enhanced,breakable,colback=paperbg,colframe=paperbg,
+  boxrule=0pt,borderline west={2.4pt}{0pt}{paperrule},arc=0pt,outer arc=0pt,
+  left=9pt,right=9pt,top=6pt,bottom=6pt,before skip=8pt,after skip=10pt,
+  before upper={\boxlabel{paperlab}{#1}{#2}}}
+\newtcolorbox{leanstmt}[2]{enhanced,breakable,colback=leanbg,colframe=leanbg,
+  boxrule=0pt,borderline west={2.4pt}{0pt}{leanrule},arc=0pt,outer arc=0pt,
+  left=9pt,right=6pt,top=6pt,bottom=6pt,before skip=8pt,after skip=12pt,
+  before upper={\boxlabel{leanrule}{#1}{#2}}}
+\newtcolorbox{leandef}[1]{enhanced,breakable,colback=defbg,colframe=defframe,
+  boxrule=0.4pt,arc=1.5pt,outer arc=1.5pt,
+  left=9pt,right=6pt,top=4pt,bottom=4pt,before skip=6pt,after skip=8pt}
+\newtcolorbox{leanmisc}[2]{enhanced,breakable,colback=miscbg,colframe=miscbg,
+  boxrule=0pt,borderline west={2.4pt}{0pt}{faint},arc=0pt,outer arc=0pt,
+  left=9pt,right=6pt,top=5pt,bottom=5pt,before skip=8pt,after skip=10pt,
+  before upper={\boxlabel{muted}{#1}{#2}}}
+\newtcolorbox{notebox}{enhanced,breakable,colback=white,colframe=defframe,boxrule=0.5pt,arc=2pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,fontupper=\sffamily\small,halign=flush left}
+
+% ---------- coverage chips ----------
+\DeclareRobustCommand\chip[3]{{\setlength{\fboxsep}{1.6pt}\colorbox{#1}{\sffamily\fontsize{7}{8}\selectfont\textcolor{#2}{\strut\,#3\,}}}}
+\DeclareRobustCommand\covchip[2]{\ifstrequal{#1}{green}{\chip{chipgreenbg}{chipgreen}{#2}}{%
+  \ifstrequal{#1}{amber}{\chip{chipamberbg}{chipamber}{#2}}{\chip{chipbluebg}{chipblue}{#2}}}}
+
+% ---------- equation keys / refs in paper excerpts ----------
+\newcommand\eqkey[1]{{\normalfont\sffamily\fontsize{7.5}{9}\selectfont\color{paperlab}(#1)}}
+\newcommand\refkey[1]{{\normalfont\sffamily\fontsize{8}{9}\selectfont\color{paperlab}#1}}
+
+% ---------- theorem environments for the excerpts (amsart-like) ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+% ---------- headings ----------
+\newcommand\partrule{{\color{defframe}\rule{\linewidth}{0.6pt}}}
+\newcommand\stmthead[6]{% #1 title #2 key #3 anchor #4 chip #5 srcline #6 pdf string
+  \clearpage
+  \phantomsection\hypertarget{#3}{}%
+  \addcontentsline{toc}{section}{\texorpdfstring{\tocstmt{#1}{#2}{#4}}{#6}}%
+  \markboth{#6}{#6}%
+  {\noindent\sffamily\color{accent}{\fontsize{19}{23}\selectfont\bfseries #1}%
+   \ifstrempty{#2}{}{\hspace{0.7em}{\ttfamily\large\color{muted}#2}}%
+   \hfill{\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#5}\par}%
+  \vspace{2pt}{\noindent\ifstrempty{#4}{}{#4}}\par
+  \vspace{-2pt}{\noindent\partrule}\par\vspace{4pt}}
+\newcommand\parthead[5]{% #1 title #2 anchor #3 srcline #4 pdf string #5 newpage(1/0)
+  \ifstrequal{#5}{1}{\clearpage}{\Needspace{8\baselineskip}\vspace{10pt}}%
+  \phantomsection\hypertarget{#2}{}%
+  \addcontentsline{toc}{section}{\texorpdfstring{\tocpart{#1}}{#4}}%
+  \markboth{#4}{#4}%
+  {\noindent\sffamily\color{accent}{\fontsize{15}{19}\selectfont\bfseries #1}%
+   \hfill{\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#3}\par}%
+  \vspace{-1pt}{\noindent\partrule}\par\vspace{3pt}}
+\newcommand\defhead[5]{% #1 id #2 name(latex) #3 anchor #4 srcline #5 pdf string
+  \Needspace{7\baselineskip}\vspace{9pt}%
+  \phantomsection\hypertarget{#3}{}\bookmark[dest=#3,level=2]{#5}%
+  {\noindent\colorbox{accent}{\sffamily\fontsize{7.5}{9}\selectfont\bfseries\color{white}\strut #1}%
+   \hspace{0.55em}{\ttfamily\bfseries\color{accent}#2}%
+   \hfill{\sffamily\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#4}\par}\vspace{1pt}}
+\newcommand\glosshead[5]{% #1 id #2 rest #3 anchor #4 srcline #5 pdf
+  \Needspace{6\baselineskip}\vspace{8pt}%
+  \phantomsection\hypertarget{#3}{}\bookmark[dest=#3,level=2]{#5}%
+  {\noindent{\sffamily\bfseries\color{accent}#1}\hspace{0.5em}{\sffamily\color{muted}—}\hspace{0.5em}{\color{accent}\bfseries #2}%
+   \hfill{\sffamily\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#4}\par}\vspace{1pt}}
+\newcommand\ctxhead[5]{% #1 title #2 key #3 anchor #4 srcline #5 pdf
+  \Needspace{6\baselineskip}\vspace{10pt}%
+  \phantomsection\hypertarget{#3}{}\bookmark[dest=#3,level=2]{#5}%
+  {\noindent{\sffamily\fontsize{7.2}{9}\selectfont\bfseries\color{muted}PAPER CONTEXT}%
+   \hspace{0.6em}{\ttfamily\color{muted}#2}\hfill{\sffamily\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#4}\par
+   \noindent{\sffamily\large\bfseries\color{accent}#1}\par}\vspace{2pt}}
+\newcommand\subhead[4]{% #1 title #2 anchor #3 srcline #4 pdf
+  \Needspace{5\baselineskip}\vspace{8pt}%
+  \phantomsection\hypertarget{#2}{}\bookmark[dest=#2,level=2]{#4}%
+  {\noindent{\sffamily\bfseries\color{accent}#1}\hfill{\sffamily\fontsize{7.5}{9}\selectfont\color{faint}Statements.lean:#3}\par}}
+\DeclareRobustCommand\tocstmt[3]{#1\hspace{0.6em}{\ttfamily\small\color{muted}#2}\hspace{0.6em}#3}
+\DeclareRobustCommand\tocpart[1]{{\bfseries #1}}
+
+% ---------- table of contents ----------
+\makeatletter
+\renewcommand\l@section[2]{%
+  \par\noindent{\sffamily\small #1\nobreak\leaders\hbox{$\m@th\mkern 4mu\hbox{\color{faint}.}\mkern 4mu$}\hfill\nobreak\hbox to 2em{\hss #2}}\par\vspace{1.5pt}}
+\makeatother
+
+% ---------- header / footer ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\ifdim\headrulewidth>0pt{\color{defframe}\hrule height \headrulewidth}\fi}
+\fancyhead[L]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}Statements.lean \textperiodcentered{} paper statements and their Lean encodings}
+\fancyhead[R]{\sffamily\fontsize{7.5}{9}\selectfont\color{accent}\rightmark}
+\fancyfoot[C]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}\thepage\ /\ \pageref*{LastPage}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\sffamily\fontsize{7.5}{9}\selectfont\color{muted}\thepage\ /\ \pageref*{LastPage}}}
