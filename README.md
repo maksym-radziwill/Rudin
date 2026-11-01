@@ -1,5 +1,7 @@
 # Rudin's problem: Lean formalization
 
+[![CI](https://github.com/maksym-radziwill/Rudin/actions/workflows/ci.yml/badge.svg)](https://github.com/maksym-radziwill/Rudin/actions/workflows/ci.yml)
+
 A Lean 4 formalization of F. Gonçalves, J. P. Ferreira and M. Radziwiłł,
 *Uniformly bounded orthonormal bases of homogeneous polynomials on the complex
 sphere*, [arXiv:2610.14160](https://arxiv.org/abs/2610.14160).
@@ -160,9 +162,12 @@ direction that loses nothing.
   empty boxes, where the sum is empty and `boxVol` is 0, so the bound would read
   0 ≤ 0; for Proposition 27, M = 0 satisfies the conclusion, and the paper's
   proof of Theorem 21 applies it to a nonempty box anyway.
-- **`R : ℕ`** in Definitions 13 and 20, where the paper allows real R ≥ 1. The
-  paper's Theorem 14 and Theorem 21 take an integer R, and the quantities
-  bounded by R (|w|₁, #W, the c_j, |A|_∞) are integers, so nothing is lost.
+- **`R : ℕ`** in Definitions 13 and 20, where the paper allows real R ≥ 1.
+  Each condition at a real R implies the same condition at ⌈R⌉, and the
+  paper's Theorem 14 and Theorem 21 take an integer R, so nothing is lost.
+  Likewise `V h : ℕ` in Theorem 2, where the paper has real V, h ≥ 1: since
+  |v|₁ and the c_j are integers, the hypotheses at V, h are the same as at
+  ⌊V⌋, ⌊h⌋.
 - **Stronger forms.** Lemma 12's hypotheses follow from the paper's and its
   conclusion is the same, with `ip` required only to be sesquilinear.
   Lemma 18 states all three conjuncts for *every* integer `abar` inverse to a
